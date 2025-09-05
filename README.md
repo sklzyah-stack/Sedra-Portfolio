@@ -1,2 +1,0 @@
-# Sedra-Portfolio
-Portfolio
