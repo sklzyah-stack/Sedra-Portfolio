@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sedra Klzyah - Data Scientist & AI Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset & base */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0f2027;
+            background: linear-gradient(135deg, #1f4037, #99f2c8);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            color: #00bcd4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #ff4081;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        header h1 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+            cursor: default;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav ul li {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        nav ul li a {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background: #00ffcc;
+            color: #0f2027;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+        /* Hero Section */
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            text-align: center;
+            flex-direction: column;
+            position: relative;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 40px #00ffcc;
+            animation: neonGlow 2.5s ease-in-out infinite alternate;
+            letter-spacing: 4px;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            color: #b0f2d9;
+            font-weight: 600;
+            text-shadow: 0 0 8px #00ffcc88;
+            animation: fadeInUp 1.8s ease forwards;
+        }
+        
+        .hero .btn {
+            background: #00ffcc;
+            color: #0f2027;
+            padding: 18px 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc, 0 0 45px #00ffcc;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 2.2s ease forwards;
+            letter-spacing: 1.5px;
+        }
+        
+        .hero .btn:hover {
+            background: #00e6b8;
+            box-shadow: 0 0 25px #00e6b8, 0 0 50px #00e6b8, 0 0 75px #00e6b8;
+        }
+        /* Animated background lines */
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient( 45deg, rgba(0, 255, 204, 0.05), rgba(0, 255, 204, 0.05) 2px, transparent 2px, transparent 10px), repeating-linear-gradient( -45deg, rgba(0, 255, 204, 0.05), rgba(0, 255, 204, 0.05) 2px, transparent 2px, transparent 10px);
+            animation: backgroundMove 20s linear infinite;
+            z-index: 0;
+        }
+        /* About Section */
+        
+        section {
+            padding: 90px 20px 100px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        h3.section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 50px;
+            text-align: center;
+            color: #00ffcc;
+            position: relative;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #00ffccaa;
+        }
+        
+        h3.section-title::after {
+            content: '';
+            width: 100px;
+            height: 5px;
+            background: #00ffcc;
+            display: block;
+            margin: 15px auto 0;
+            border-radius: 3px;
+            box-shadow: 0 0 15px #00ffccaa;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .about-text {
+            flex: 1 1 450px;
+            font-size: 1.2rem;
+            color: #b0f2d9;
+            line-height: 1.9;
+            font-weight: 600;
+            animation: fadeInLeft 1.2s ease forwards;
+            text-shadow: 0 0 5px #00ffcc55;
+        }
+        
+        .about-text strong {
+            color: #00ffcc;
+            font-weight: 900;
+        }
+        
+        .about-img {
+            flex: 1 1 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px #00ffccaa, 0 0 60px #00ffcc88 inset;
+            animation: fadeInRight 1.2s ease forwards;
+            border: 2px solid #00ffcc55;
+        }
+        
+        .about-img video {
+            width: 100%;
+            display: block;
+            border-radius: 20px;
+            filter: drop-shadow(0 0 10px #00ffccaa);
+            transition: transform 0.5s ease;
+        }
+        
+        .about-img video:hover {
+            transform: scale(1.05) rotate(1deg);
+            filter: drop-shadow(0 0 20px #00ffccff);
+        }
+        /* Skills Section */
+        
+        #skills {
+            background: rgba(0, 255, 204, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 0 40px #00ffcc33 inset;
+            padding: 80px 20px 100px;
+            margin-top: 60px;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .skill {
+            background: #002f2a;
+            padding: 18px 35px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #00ffcc;
+            box-shadow: 0 0 15px #00ffccaa, 0 0 30px #00ffcc88;
+            cursor: default;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            letter-spacing: 1.2px;
+            user-select: none;
+        }
+        
+        .skill:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 25px #00ffccff, 0 0 50px #00ffccdd;
+            color: #00ffe0;
+        }
+        /* Services Section */
+        
+        #services {
+            margin-top: 80px;
+        }
+        
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        
+        .service-card {
+            background: #002f2a;
+            padding: 35px 30px;
+            border-radius: 25px;
+            width: 45%;
+            max-width: 400px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            color: #b0f2d9;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 0 50px #00ffccff, 0 0 100px #00ffccdd inset;
+            color: #00ffe0;
+        }
+        
+        .service-card h4 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffccbb;
+            font-weight: 900;
+        }
+        
+        .service-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        /* Contact Section */
+        /* Animations */
+        
+        @keyframes neonGlow {
+            0%,
+            100% {
+                text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc, 0 0 80px #00ffcc;
+            }
+            50% {
+                text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 50px #00ffcc, 0 0 100px #00ffcc;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0 0, 0 0;
+            }
+            100% {
+                background-position: 100px 100px, -100px -100px;
+            }
+        }
+        
+        .read-more-btn {
+            align-self: center;
+            background: #00ffcc;
+            color: #0f2027;
+            border: none;
+            padding: 8px 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px #00ffccaa, 0 0 25px #00ffcc66;
+        }
+        
+        .read-more-btn:hover {
+            background: #00e6b8;
+            box-shadow: 0 0 20px #00e6b8, 0 0 40px #00e6b8;
+            color: #0f2027;
+        }
+        /* Responsive */
+        
+        @media (max-width: 900px) {
+            .about-content {
+                flex-direction: column;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+            .skill {
+                font-size: 1.1rem;
+                padding: 14px 28px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .hero .btn {
+                padding: 14px 40px;
+                font-size: 1rem;
+            }
+            .service-card {
+                width: 100%;
+            }
+            .about-text {
+                font-size: 1rem;
+            }
+        }
+        /* Responsive Fixes */
+        
+        @media (max-width: 1024px) {
+            header {
+                padding: 12px 25px;
+            }
+            header h1 {
+                font-size: 1.6rem;
+            }
+            nav ul {
+                gap: 20px;
+            }
+            .service-card {
+                width: 45%;
+                /* اتنين كارد في السطر */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px 15px;
+            }
+            header h1 {
+                font-size: 1.3rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .service-card {
+                width: 100%;
+                /* كارد واحد في السطر */
+            }
+            .about-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.1rem;
+                letter-spacing: 1px;
+            }
+            nav ul li {
+                font-size: 0.85rem;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .service-card {
+                width: 100%;
+                padding: 25px 20px;
+            }
+            .about-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Sedra Klzyah</h1>
+        <nav>
+            <div class="menu-toggle" id="menu-toggle">☰</div>
+            <ul id="nav-links">
+
+
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#What I Do">What I Do</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <style>
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #00ffcc;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none !important;
+                /* مخفي افتراضي */
+                flex-direction: column;
+                gap: 15px;
+                background: rgba(0, 0, 0, 0.9);
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                width: 200px;
+                padding: 15px;
+                border-radius: 8px;
+            }
+            nav ul.show {
+                display: flex !important;
+                /* يظهر عند الضغط */
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+    <section class="hero" id="home" aria-label="Introduction">
+        <h2>Data Scientist &amp; AI Developer</h2>
+        <p>intelligent solutions through data and AI innovation.</p><button class="btn" onclick="window.location.href='#contact'">Get in Touch</button></section>
+    <section id="about" aria-label="About Me">
+        <h3 class="section-title">About Me</h3>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I am <strong>Sedra Klzyah</strong>, a professional <strong>Data Scientist</strong>and <strong>Artificial Intelligence Developer</strong>dedicated to crafting cutting-edge data-driven solutions. With deep expertise in <strong>Python</strong>,
+                    <strong>C++</strong>,
+                    <strong>JavaScript</strong>,
+                    <strong>HTML</strong>, and <strong>CSS</strong>, I transform complex data into actionable insights and build intelligent systems that empower businesses to thrive in the digital era. </p>
+                <p>My academic background in Computer Science and AI fuels my passion for innovation, while my hands-on experience ensures practical, scalable, and impactful results. I am committed to excellence, continuous learning, and pushing the boundaries
+                    of what AI and data science can achieve. </p>
+            </div>
+            <div class="about-img" aria-label="Data science and AI related video"><video autoplay muted loop playsinline preload="auto" poster="ddss.jpg" title="Data Science and AI Animation"><img src="images.jpg"></div></div></section><section id="skills" aria-label="Skills"><h3 class="section-title">Skills</h3><div class="skills-list" role="list"><div class="skill" role="listitem" aria-label="Data Science">Data Science</div><div class=" skill " role="listitem " aria-label="Python ">Python</div><div class="skill " role="listitem " aria-label=" Machine Learning ">Machine Learning</div><div class="skill " role="listitem " aria-label=" Trainer ">Trainer</div><div class="skill " role="listitem " aria-label="Cloud SQL ">Cloud SQL</div><div class="skill " role="listitem " aria-label="Front end (React)">Front end (React)</div><div class="skill " role="listitem " aria-label="MS Office">MS Office</div></div><!-- What I Do Section --><section id="What I Do" aria-label="What I Do"><h3 class="section-title">What I Do</h3><div class="services"><div class="service-card"><h4>Data Analysis & Visualization</h4><p class="short-text">Transform raw data into actionable insights through advanced statistical analysis and compelling visualizations...</p><p class="full-text" style="display:none;">using tools like Python,
+        R,
+        and Tableau. We help businesses spot trends and make data-driven decisions.</p><button class="read-more-btn">Read more</button></div><div class="service-card"><h4>Machine Learning Models</h4><p class="short-text">Develop predictive models and AI solutions tailored to your needs. From classification and regression...</p><p class="full-text" style="display:none;">to recommendation systems,
+        we leverage scikit-learn,
+        TensorFlow,
+        and PyTorch for cutting-edge results.</p><button class="read-more-btn">Read more</button></div><div class="service-card"><h4>Big Data & Cloud Solutions</h4><p class="short-text">Handle massive datasets with expertise in Hadoop,
+        Spark,
+        and cloud platforms like AWS and GCP...</p><p class="full-text" style="display:none;">Scalable pipelines for real-time processing and storage ensure your data infrastructure is future-proof.</p><button class="read-more-btn">Read more</button></div><div class="service-card"><h4>Consulting & Strategy</h4><p class="short-text">Provide strategic guidance on data governance,
+        ethics,
+        and integration into your business processes...</p><p class="full-text" style="display:none;">Workshops and audits to align data initiatives with organizational goals.</p><button class="read-more-btn">Read more</button></div><div class="service-card"><h4>Custom Dashboards & Reports</h4><p class="short-text">Build interactive dashboards with Power BI,
+        Shiny apps,
+        or Streamlit for real-time monitoring...</p><p class="full-text" style="display:none;">Empower stakeholders with self-service analytics.</p><button class="read-more-btn">Read more</button></div><div class="service-card"><h4>Data Engineering</h4><p class="short-text">Design and implement robust data pipelines for ETL processes,
+        data warehousing,
+        and automation...</p><p class="full-text" style="display:none;">Ensure data quality and reliability across systems.</p><button class="read-more-btn">Read more</button></div></div></section><script>document.querySelectorAll(".read-more-btn").forEach(button=> {
+            button.addEventListener("click", ()=> {
+                const card=button.parentElement;
+                const shortText=card.querySelector(".short-text");
+                const fullText=card.querySelector(".full-text");
+                if (fullText.style.display==="none") {
+                    fullText.style.display="inline";
+                    button.textContent="Read less";
+                }
+                else {
+                    fullText.style.display="none";
+                    button.textContent="Read more";
+                }
+            }
+            );
+        }
+        
+        );
+        </script><!-- Professional Contact Us Section (Data Science) --><section id="contact" aria-label="contact"><h3 class="section-title">contact</h3><section id="contact" aria-labelledby="contact-heading" style="font-family: 'Inter', system-ui, sans-serif; background:#f9fdfb; padding:80px 20px;"><style>.contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 36px;
+            align-items: start;
+        }
+        
+        @media(max-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Left section */
+        
+        .contact-info h2 {
+            font-size: 28px;
+            margin: 0 0 12px;
+            color: #0b6b3a;
+            font-weight: 700;
+        }
+        
+        .contact-info p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #2b4738;
+            margin-bottom: 18px;
+        }
+        
+        .contact-info ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #234c36;
+            line-height: 1.6;
+        }
+        
+        .contact-info li {
+            margin-bottom: 6px;
+        }
+        /* Form card */
+        
+        .contact-form {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(6, 30, 18, .08);
+            border: 1px solid #e8f3ec;
+        }
+        
+        label {
+            font-weight: 600;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 6px;
+            color: #214d36;
+        }
+        
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #dbe9e2;
+            background: #fcfffd;
+            font-size: 14px;
+            color: #123223;
+            margin-bottom: 14px;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: linear-gradient(90deg, #1a9a4f, #0b6b3a);
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            border: 0;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(11, 107, 58, .2);
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(11, 107, 58, .25);
+        }
+        
+        .form-msg {
+            display: none;
+            font-size: 14px;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+        
+        .form-msg.success {
+            display: block;
+            background: #eaffef;
+            border: 1px solid #b4e2c0;
+            color: #0b6b3a;
+        }
+        
+        .form-msg.error {
+            display: block;
+            background: #fff2f0;
+            border: 1px solid #f3c3bd;
+            color: #812d21;
+        }
+        
+        .meta {
+            font-size: 13px;
+            color: #6a8678;
+            margin-top: 16px;
+        }
+    </style>
+
+    <div class="contact-container">
+        <!-- Left content -->
+        <div class="contact-info">
+            <h2 id="contact-heading">Let’s Talk Data</h2>
+            <p>
+                Whether you’re building predictive models, structuring data pipelines, or exploring AI integration, we’d love to hear from you. Share your project details and we’ll respond within <strong>1–2 business days</strong>.
+            </p>
+            <ul>
+                <li>Summarize your business challenge</li>
+                <li>Mention the type & size of data</li>
+                <li>Highlight deadlines or deliverables</li>
+            </ul>
+        </div>
+
+        <!-- Right form -->
+        <div class="contact-form">
+            <form id="contactForm" action="https://formsubmit.co/sklzyah@gmail.com" method="POST" autocomplete="on">
+
+                <!-- FormSubmit settings -->
+                <input type="hidden" name="_subject" value="New Data Science Inquiry">
+                <input type="hidden" name="_autoresponse" value="Thank you — we have received your message and will reply shortly.">
+                <input type="hidden" name="_honey" style="display:none">
+
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your full name">
+                <label for="email">Work Email</label>
+                <input type="email" id="email" name="email" required placeholder="your@company.com">
+
+
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Please include scope, data availability, and timeline."></textarea>
+
+                <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                <div id="formMessage" class="form-msg" role="status"></div>
+
+                <p class="meta">Or email us directly: </p>
+                <a href="mailto:sklzyah@gmail.com" style="color:#0b6b3a; font-size: 15px;">sklzyah@gmail.com</a>
+
+                <input type="hidden" name="_captcha" value="false">
+
+                <!-- CSS -->
+                <style>
+                    .meta {
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 5px;
+                    }
+                    
+                    .email-link {
+                        color: #0b6b3a;
+                        font-size: 16px;
+                        text-decoration: none;
+                        /* يشيل الخط تحت النص */
+                    }
+                    
+                    .email-link:hover {
+                        text-decoration: underline;
+                        /* يظهر الخط عند المرور */
+                    }
+                </style>
+                <input type="hidden" name="_captcha" value="false">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const msgBox = document.getElementById('formMessage');
+        form.addEventListener('submit', function() {
+            msgBox.className = 'form-msg success';
+            msgBox.textContent = 'Your message is being sent… thank you!';
+        });
+    </script>
+    </section>
+    <input type="hidden" name="_captcha" value="false">
+    </form>
+    </section>
+    <script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+</script>
+</body>
+
+</html>
